@@ -482,22 +482,22 @@ p{
 }
 
 .photo1{
-	background-image: url(cat1.jpg);
+	background-image: url(../pic/cat1.jpg);
 }
 .photo2{
-	background-image: url(cat2.jpg);
+	background-image: url(../pic/cat2.jpg);
 }
 .photo3{
-	background-image: url(cat4.jpg);
+	background-image: url(../pic/cat4.jpg);
 }
 .photo4{
-	background-image: url(cat3.jpg);
+	background-image: url(../pic/cat3.jpg);
 }
 .photo5{
-	background-image: url(cat5.jpg);
+	background-image: url(../pic/cat5.jpg);
 }
 .photo6{
-	background-image: url(cat6.jpg);
+	background-image: url(../pic/cat6.jpg);
 }
 
 
