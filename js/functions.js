@@ -97,6 +97,7 @@
 			};
 		});
 
+
 		$(".toggle").on('mouseenter',function () {
 	  		if ($(this).position().top == 5){
 	  			$(this).addClass('possible');
@@ -197,11 +198,15 @@
 		    return false;
 		});
 	});
-
-	var canvas = document.getElementById('paper'),
-		c = canvas.getContext('2d');
-
-	c.fillStyle = 'black';
-	c.fillRect(0 , 0, canvas.width, canvas.height);
+	
+	
+	var inputFields = $('.form-label').next();
+	inputFields.each(function(){
+		var singleInput = $(this);
+		( singleInput.val() == '' ) ? singleInput.prev('.form-label').removeClass('float') : singleInput.prev('.form-label').addClass('float');	
+		singleInput.on('change keyup', function(){
+			( singleInput.val() == '' ) ? singleInput.prev('.form-label').removeClass('float') : singleInput.prev('.form-label').addClass('float');	
+		});
+	});
 	
 })(jQuery);
