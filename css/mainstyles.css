@@ -318,7 +318,19 @@ p{
 }
 
 
-
+.macwrap{
+	position: relative;
+	left: 0;
+	width: 100%;
+	margin-bottom: 100px;
+}
+.macwrap img{
+	position: relative;
+	max-width: 100%;
+	max-height: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+}
 .imagewrap{
 	position: relative;
 	left: 18%;

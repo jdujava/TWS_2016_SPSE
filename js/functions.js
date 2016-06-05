@@ -1,6 +1,5 @@
 (function ($){
 	$(document).ready(function(){
-		$('#sidebartoggler').attr('checked', false);
 
 		var width = $(window).width();
 		var height = $(window).height();
@@ -69,7 +68,7 @@
 
 
 			if ($('.active').attr('id')=='homesite') {
-				if (count < 3){
+				if (count < 4){
 					item = '.anim' + count; 
 					float_item = $('.active').children().children().filter(item);
 					float_item_offset = float_item.offset().top;
@@ -85,16 +84,10 @@
 
 		
 
-		$('#sidebartoggler').click(function (e) {
-			if ($('#sidebartoggler').is(':checked')) {
-				$('.toggle').children().addClass('clicked');
-				$('.toggle').addClass('active-toggle');
-				$('.black').addClass('active-nav');
-			}else{
-				$('.toggle').children().removeClass('clicked');
-				$('.toggle').removeClass('active-toggle');
-				$('.black').removeClass('active-nav');
-			};
+		$('.toggle').click(function (e) {
+			$('.toggle').children().toggleClass('clicked');
+			$('.toggle').toggleClass('active-toggle');
+			$('.black').toggleClass('active-nav');
 		});
 
 
@@ -133,7 +126,7 @@
 		$('#homesite').addClass('active');
 		$('.content').not('.active').hide(1);
 		$('li a').click(function(){
-			$('#sidebartoggler').trigger('click');
+			$('.toggle').trigger('click');
 			var site = '#' + $(this).attr('id') + 'site';
 				$('.content').hide(1).removeClass('active');
 				$(site).show(1);
@@ -218,8 +211,6 @@
 		$('.border-width').removeClass('deactive-width');
 		$('.border-height').removeClass('deactive-height');
 		setTimeout(function(newSendTime){
-			console.log(sendTime);
-			console.log(newSendTime);
 			if (send && newSendTime == sendTime) {
 				alert('Nothing has been sended you foooool, this message shall not paaaaaaaasssssss!!!!!!!');	
 			}
