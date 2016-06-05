@@ -271,7 +271,8 @@ nav a{
 .content{
 	position: absolute;
 	left: 60px;
-	width: calc(90% - 60px);
+	box-sizing: border-box;
+	width: calc(100% - 60px);
 	min-height: 100%;
 	background-color: white;
 	padding: 0 5%;
@@ -279,7 +280,7 @@ nav a{
 }
 .part{
 	position: relative;
-	margin-bottom: 200px;
+	margin: 50px 0;
 }
 .faded{
 	transform: translateY(200px);
@@ -302,27 +303,31 @@ nav a{
 }
 article{
 	position: relative;
-	margin: 150px auto;
-	max-width: 1300px;
+	margin: 200px auto;
+	max-width: 1000px;
 }
 h1{
-	text-align: center;
+	text-align: left;
 	font-size: 50px;
 	font-family: 'Titillium Web', sans-serif;
+	margin-bottom: 30px;
 }
 p{
-	font-size: 1.5em;
+	font-size: 1em;
 	font-family: "Open Sans", sans-serif;
 	font-weight: 300;
 	color: rgba(0,0,0,.8);
 }
 
 
+.part:nth-child(1), .part:nth-child(2){
+	margin: 0;
+}
+
 .macwrap{
 	position: relative;
-	left: 0;
-	width: 100%;
-	margin-bottom: 100px;
+	left: 5%;
+	width: 90%;
 }
 .macwrap img{
 	position: relative;
@@ -331,65 +336,57 @@ p{
 	left: 50%;
 	transform: translateX(-50%);
 }
-.imagewrap{
+
+
+.text-section{
+	padding: 80px 100px 120px 100px;
+}
+.text{
 	position: relative;
-	left: 18%;
-	width: 80%;
-	margin-bottom: 50px;
-}
-.imagewrap img{
-	position: absolute;
-	max-width: 100%;
-	max-height: 100%;
-	left: 50%;
-	transform: translateX(-50%);
-}
-.popis{
-	position: absolute;
-	top: 50px;
-	width: 520px;
-	z-index: 1;
-}
-.popis h2{
-	display: inline;
-	font-size: 2em;
-	line-height: 1.8em;
-	background: white;
-	font-family: "Open Sans", sans-serif;
-	font-weight: 200;
-	color: rgba(0,0,0,.8);
-}
-.cross-line{
-	position: absolute;
-	width: 100px;
-	height: 100px;
-}
-.cross-line:before{
-	display: block;
-	content: "";
-	width: 1px;
-	height: 100px;
-	transform: translateX(50px) rotate(45deg);
-	background: rgba(0,0,0,.9);
-}
-.left-line{
-	left: -60px;
-	top: -60px;
-}
-.right-line{
-	right: -60px;
-	bottom: -60px;
-}
-.text-right{
-	position: relative;
-	top: 100px;
-	width: calc(70% - 100px);
-	margin: 0 auto;
+	width: 30%;
 	text-align: justify;
 }
-.text-right p{
-	margin-bottom: 25px;
+.text-left{
+	left: 10%;
 }
+.text-right{
+	left: 57%;
+}
+.text-section img{
+	position: absolute;
+	top: 0;
+	margin-left: -208px;
+	max-width: 48%;
+	max-height: 100%;
+	transform: rotate(0deg);
+	transition: all 2s linear;
+}
+.pic-right{
+	left: 70%;
+}
+.pic-left{
+	left: 30%;
+}
+
+.gear:hover{
+	animation: rotate 1s linear infinite;
+}
+.people:hover{
+	animation: jump 1.5s ease infinite;
+}
+
+@keyframes rotate{
+	0%, 50%{transform: rotate(0deg);}
+	25%{transform: rotate(20deg);}
+}
+@keyframes jump{
+	0%, 30%, 50%{transform: scale(1);}
+	15%{transform: scale(1.2);}
+	40%{transform: scale(1.15);}
+}
+
+
+
 
 
 
@@ -635,47 +632,32 @@ input[type="submit"] {
     }
 }
 
-@media screen and (max-width: 1200px){
-	.text-right{
-		width: calc(100% - 100px);
+@media screen and (max-width: 900px){
+	.photo{
+	background-size: auto 120%;
 	}
-	.imagewrap{
-		width: 90%;
-		left: 5%;
-		height: auto;
+	.part{
+		margin: 50px 0;
 	}
-	.imagewrap img{
-		top: -80px;
+	.text{
+		width: 100%;
+		left: 0;
+		margin-bottom: 30px;
+	}
+	.text-section img{
 		position: relative;
 		width: 100%;
-		max-height: 1000px;
-	}
-	.popis{
-		position: relative;
-		width: 80%;
-		top: -100px;
-		left: 10% !important;
-		transform: translateX(0px);
-		text-align: center;
+		left: 0;
 	}
 }
 
 @media screen and (max-width: 509px) {
-	.popis h2{
-		font-size: 1.5em;
-	}
-	p{
-		font-size: 1em;
-	}
     nav {
     	right: 40px;
     }
     .hor-line{
     	right: 230px;
     }
-    .photo{
-	background-size: auto 120%;
-	}
 }
 
 @media screen and (max-width: 350px) {

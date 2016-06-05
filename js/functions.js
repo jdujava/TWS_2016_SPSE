@@ -9,21 +9,12 @@
 
 		var bool = false;
 
-		$('.imagewrap').css({'height': 0.6*height});
-		var left = $('.hah').position().left;
-		$('.popis').css({
-			'left' : left - 260 +'px'
-		});
+		
 		$(window).on('resize', function(){
 			width = $(window).width();
 			height = $(window).height();
 			scroll_height = $('.scroll').height();
 
-			$('.imagewrap').css({'height': 0.6*height});
-			left = $('.hah').position().left;
-			$('.popis').css({
-				'left' : left - 260 +'px'
-			});
 		});
 
 		$('.scroll').click(function (e) {
@@ -68,11 +59,11 @@
 
 
 			if ($('.active').attr('id')=='homesite') {
-				if (count < 4){
+				if (count < 3){
 					item = '.anim' + count; 
 					float_item = $('.active').children().children().filter(item);
 					float_item_offset = float_item.offset().top;
-					visible_height = float_item_offset - height*0.8;
+					visible_height = float_item_offset - height*0.9;
 					if (scrolltop > visible_height) {
 						$(float_item).addClass('floated-in');
 						count++;
@@ -138,6 +129,9 @@
 			}, 100);
 			
 		});
+
+
+
 
 		$('.gallery-item').click(function(e){
 			if (bool==false){
