@@ -208,5 +208,31 @@
 			( singleInput.val() == '' ) ? singleInput.prev('.form-label').removeClass('float') : singleInput.prev('.form-label').addClass('float');	
 		});
 	});
+
+	var send = false;
+	var sendTime = new Date().getTime();
+
+	$('input[type="submit"]').on('mousedown',function(e){
+		send = true;
+		sendTime = new Date().getTime();
+		$('.border-width').removeClass('deactive-width');
+		$('.border-height').removeClass('deactive-height');
+		setTimeout(function(newSendTime){
+			console.log(sendTime);
+			console.log(newSendTime);
+			if (send && newSendTime == sendTime) {
+				alert('Nothing has been sended you foooool, this message shall not paaaaaaaasssssss!!!!!!!');	
+			}
+		}.bind(null, sendTime), 1000);
+	});
+	$('input[type="submit"]').on('mouseup mouseout',function(e){
+		send = false;
+		$('.border-width').addClass('deactive-width');
+		$('.border-height').addClass('deactive-height');
+	});
+	$('input[type="submit"]').click(function(e){
+		e.preventDefault;
+		return false;
+	});
 	
 })(jQuery);
