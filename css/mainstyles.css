@@ -134,8 +134,9 @@ nav a{
 }
 .scroll{
 	position: absolute;
-	bottom: 5%;
-	top: 75px;
+	margin: 100px 0;
+	top: 0;
+	bottom: 0; 
 	left: 50%;
 	margin-left: -17.5px;
 	width: 35px;
@@ -168,16 +169,16 @@ nav a{
 	background-color: #9b9ba4;
 }
 .indicator{
-	bottom: -200px;
 	transition: bottom 1000ms cubic-bezier(0.19, 1, 0.22, 1);
+	transform: translateY(50%);
 }
 .indicator-first{
-	bottom: 95% !important;
+	bottom: 100% !important;
 }
 .indicator-last{
-	bottom: 5% !important;
+	bottom: -0% !important;
 }
-.out{
+.homesiteindicators .out,.gallerysiteindicators .out{
 	bottom: -200px !important;
 }
 .indicator-dot{
@@ -478,6 +479,8 @@ p{
 	text-align: center;
 	height: 1.5em;
 	color: rgba(0,0,0,0.7);
+	background-color: white;
+	z-index: 5;
 	font-family: 'Titillium Web', sans-serif;
 	font-size: 2em;
 	transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1);
@@ -519,15 +522,16 @@ p{
 }
 .description-inner{
 	position: absolute;
-	height: 100%;
+	height: 1em;
+	top: 50%;
 	width: 100%;
 	z-index: 51; 
-	transform: translateX(0%);
 	transition: transform 0ms cubic-bezier(0.19, 1, 0.22, 1) 500ms;
 }
-.active-description .description-inner{
-	transform: translateX(0%);
-	transition: transform 500ms cubic-bezier(0.19, 1, 0.22, 1) 0ms;
+.description-inner p{
+	font-size: 3em;
+	text-align: center;
+	transform: translateY(-50%);
 }
 
 
@@ -561,7 +565,7 @@ p{
 .photo5{
 	background-image: url(../pic/cat5.jpg);
 }
-.photo6{
+.photo0{
 	background-image: url(../pic/cat6.jpg);
 }
 
@@ -708,7 +712,18 @@ input[type="submit"] {
 
 @media screen and (max-width: 900px){
 	.photo{
-	background-size: auto 120%;
+		width: 70%;
+		left: 15%;
+	}
+	.full-size .photo{
+		width: 90%;
+		left: 5%;
+	}
+	.learn{
+		right: 6%;
+	}
+	.little-line{
+		display: none;
 	}
 	.part{
 		margin: 50px 0;
@@ -723,14 +738,11 @@ input[type="submit"] {
 		transform: none;
 		margin-bottom: 30px;
 	}
-	.anim1{
-		transform: translateY(0%);
-		opacity: 1;
-	}
 	.text-section img{
 		max-width: 70%;
 		max-height: 70%;
 	}
+
 }
 
 @media screen and (max-width: 509px) {
@@ -750,6 +762,14 @@ input[type="submit"] {
     .part:nth-child(1){
     	display: none;
     }
+    h1{
+    	margin-bottom: 50px;
+    }
+    .photo{
+		width: 80%;
+		left: 10%;
+		background-size: auto 100%;
+	}
 }
 
 
