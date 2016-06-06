@@ -17,6 +17,30 @@
 
 		});
 
+		setTimeout(function(){
+			$(window).trigger('scroll');
+			$('.indicator:first').addClass('indicator-first');
+			$('.indicator:last').addClass('indicator-last');
+			$('.indicator').each(function(i){
+				var element = '.anim' + i;
+				var element_height = $(element).height();
+				var element_offset = $(element).offset().top - 200;
+				var indicator_position = 100*(element_offset - 0.5*height + 0.5*element_height )/page_height;
+				$(this).css({
+					'bottom' : 100 - indicator_position +'%'
+				});
+			});
+		},1000);
+
+		$('.indicator h4').click(function (e) {
+			e.preventDefault;
+			page_height = $('.active').height() - height;
+			var posY = $(this).parent().position().top;
+			var progress = page_height*posY/scroll_height;
+			$('body').stop().animate({'scrollTop' : progress},700,'easeInOutQuad');
+			$('.dot-box').stop().animate({top: posY},700,'easeInOutQuad');
+		});
+
 		$('.scroll').click(function (e) {
 			page_height = $('.active').height() - height;
 			var posY = e.pageY - $(this).offset().top;
@@ -24,6 +48,7 @@
 			$('body').stop().animate({'scrollTop' : progress},700,'easeInOutQuad');
 			$('.dot-box').stop().animate({top: posY},700,'easeInOutQuad');
 		});
+
 
 		$('.dot-box').on('mousedown', function(){
 			bool = true;
@@ -42,7 +67,7 @@
 		});
 
 
-		var count = 1;
+		var count = 0;
 		var item;
 		var float_item;
 		var float_item_offset;
@@ -59,7 +84,7 @@
 
 
 			if ($('.active').attr('id')=='homesite') {
-				if (count < 3){
+				if (count < 4){
 					item = '.anim' + count; 
 					float_item = $('.active').children().children().filter(item);
 					float_item_offset = float_item.offset().top;
@@ -79,6 +104,7 @@
 			$('.toggle').children().toggleClass('clicked');
 			$('.toggle').toggleClass('active-toggle');
 			$('.black').toggleClass('active-nav');
+			$('.indicator').toggleClass('out');
 		});
 
 
@@ -116,6 +142,8 @@
 
 		$('#homesite').addClass('active');
 		$('.content').not('.active').hide(1);
+
+
 		$('li a').click(function(){
 			$('.toggle').trigger('click');
 			var site = '#' + $(this).attr('id') + 'site';
