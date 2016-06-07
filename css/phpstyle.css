@@ -1,0 +1,29 @@
+@import url('reset.css');
+
+body{
+	text-align: center;
+}
+
+h1{
+	position: relative;
+	top: 200px;
+	font-size: 50px;
+	font-family: 'Titillium Web', sans-serif;
+}
+
+section{
+	position: relative;
+	margin-top: 400px;
+	width: 100%;
+}
+section p{
+	font-size: 1em;
+	font-family: "Open Sans", sans-serif;
+	font-weight: 300;
+	color: rgba(0,0,0,.8);
+}
+
+.oznamy{
+	display: none;
+	opacity: 0;
+}

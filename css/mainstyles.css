@@ -1,19 +1,14 @@
 @import url('fonts.css');
 @import url('reset.css');
 
-#sidebartoggler{
+.vertical{-moz-user-select: none; -webkit-user-select: none;}
+
+::-webkit-scrollbar{
 	display: none;
 }
-
-body{-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;}
-
-::-webkit-scrollbar {
-	display: none;
-}
-
 
 /*nav*/
-.black{
+.nav-container{
 	position: fixed;
 	left: calc(-100% + 61px);
 	top: 0;
@@ -109,7 +104,7 @@ nav a{
 	bottom: 0px;
 	overflow: hidden;
 }
-.white{
+.black{
 	position: absolute;
 	left: -155px;
 	background-color: rgba(0,0,0,0.85);
@@ -155,6 +150,7 @@ nav a{
 	height: 33px;
 	border-radius: 50%;
 	margin-top: -16px;
+	cursor: pointer;
 }
 .dot, .indicator-dot{
 	position: absolute;
@@ -167,6 +163,11 @@ nav a{
 }
 .dot{
 	background-color: #9b9ba4;
+	transition: opacity 1s ease;
+}
+.not-show{
+	opacity: 0;
+	transition: opacity .3s ease;
 }
 .indicator{
 	transition: bottom 1000ms cubic-bezier(0.19, 1, 0.22, 1);
@@ -178,7 +179,7 @@ nav a{
 .indicator-last{
 	bottom: -0% !important;
 }
-.homesiteindicators .out,.gallerysiteindicators .out{
+.out{
 	bottom: -200px !important;
 }
 .indicator-dot{
@@ -200,8 +201,6 @@ nav a{
 	top: 5px;
 	color: #9b9ba4;
 }
-
-
 
 
 
@@ -266,19 +265,22 @@ nav a{
 	overflow: hidden;
 }
 .social span:before{vertical-align: middle;}
-.title-s{
-	position: absolute;
-	left: -51px;
+.title-s, .white-s{
 	display: inline-block;
 	width: 50px;
 	height: 43px;
 	border-radius: 10px;
 	font-family: "scicons";
 	text-decoration: none;
-	color: #FFFFFF;
 	font-size: 25px;
 	padding-top: 7px;
 	text-align: center;
+}
+
+.title-s{
+	position: absolute;
+	left: -51px;
+	color: #FFFFFF;
 	transition: left 0.3s ease;
 }
 .fb{background-color: #3b5998;}
@@ -289,17 +291,7 @@ nav a{
 .tw:before{content: "\e800";}
 
 .white-s{
-	display: inline-block;
-	left: -51px;
 	background-color: white;
-	width: 50px;
-	height: 43px;
-	border-radius: 10px;
-	font-family: "scicons";
-	text-decoration: none;
-	font-size: 25px;
-	padding-top: 7px;
-	text-align: center;
 }
 .fb-w{color: #3b5998;}
 .yt-w{color: #c4302b;}
@@ -343,7 +335,7 @@ nav a{
 }
 article{
 	position: relative;
-	margin: 200px auto;
+	margin: 200px auto 100px;
 	max-width: 1000px;
 }
 h1{
@@ -445,8 +437,6 @@ p{
 
 
 
-
-
 #gallerysite{
 	padding: 0;
 	width: calc(100% - 60px);
@@ -528,6 +518,20 @@ p{
 	z-index: 51; 
 	transition: transform 0ms cubic-bezier(0.19, 1, 0.22, 1) 500ms;
 }
+.cross{
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	width: 25px;
+	height: 25px;
+	padding: 5px;
+	cursor: pointer;
+}
+.cross span{
+	left: 3px;
+}
+.cross span:nth-child(1){transform : translate(0px,10px) rotate(45deg);}
+.cross span:nth-child(2){transform : translate(0px, 10px) rotate(-45deg);}
 .description-inner p{
 	font-size: 3em;
 	text-align: center;
@@ -549,7 +553,9 @@ p{
 	width: calc(100% - 400px);
 	left: 100px;
 }
-
+.photo0{
+	background-image: url(../pic/cat6.jpg);
+}
 .photo1{
 	background-image: url(../pic/cat1.jpg);
 }
@@ -565,9 +571,7 @@ p{
 .photo5{
 	background-image: url(../pic/cat5.jpg);
 }
-.photo0{
-	background-image: url(../pic/cat6.jpg);
-}
+
 
 
 form{
@@ -645,16 +649,16 @@ input[type="submit"] {
 }
 
 .user {
-  background: url("../pic/cd-icon-user.svg") no-repeat 16px center, url("../pic/cd-required.svg") no-repeat top right;
+  background: url("../pic/cd-icon-user.svg") no-repeat 16px center, url("../pic/cd-required.svg") no-repeat top right !important;
 }
 .company {
-  background: url("../pic/cd-icon-company.svg") no-repeat 16px center;
+  background: url("../pic/cd-icon-company.svg") no-repeat 16px center !important;
 }
 .email {
-  background: url("../pic/cd-icon-email.svg") no-repeat 16px center, url("../pic/cd-required.svg") no-repeat top right;
+  background: url("../pic/cd-icon-email.svg") no-repeat 16px center, url("../pic/cd-required.svg") no-repeat top right !important;
 }
 .message {
-  background: url("../pic/cd-icon-message.svg") no-repeat 16px 16px, url("../pic/cd-required.svg") no-repeat top right;
+  background: url("../pic/cd-icon-message.svg") no-repeat 16px 16px, url("../pic/cd-required.svg") no-repeat top right !important;
 }
 
 .border-width, .border-height{
@@ -680,6 +684,18 @@ input[type="submit"] {
 }
 .deactive-height{
 	height: 0;
+}
+
+
+footer{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 2em;
+	text-align: right;
+	box-sizing: border-box;
+	padding-right: 20px;
+	width: 100%;
 }
 
 
@@ -745,6 +761,7 @@ input[type="submit"] {
 
 }
 
+
 @media screen and (max-width: 509px) {
     nav {
     	right: 40px;
@@ -779,4 +796,9 @@ input[type="submit"] {
     .hor-line{
     	right: 220px;
     }
+}
+
+.souhrn{
+	display: none;
+	opacity: 0;
 }
