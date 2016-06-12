@@ -3,6 +3,26 @@
 
 		$('.indicator').addClass('out');
 
+		$(document).click(function(e){
+			var sound = document.getElementById("mlg");
+			sound.load();
+			sound.play();
+			console.log('dsfa');
+			setTimeout(function(){
+				scrolltop = $(window).scrollTop();
+				var top = e.pageY - scrolltop;
+				var left = e.pageX;
+				$('.mlg-cross').css({
+					'top' : top ,
+					'left' : left
+				}).stop().fadeIn(20);
+			},10);
+			setTimeout(function(){
+				$('.mlg-cross').fadeOut(20);
+			},200);
+
+		});
+
 		var width = $(window).width();
 		var height = $(window).height();
 		var scroll_height = $('.scroll').height();
@@ -12,7 +32,7 @@
 		var page = '.active';
 		var bool = false;
 
-		
+
 		$(window).on('resize', function(){
 			width = $(window).width();
 			height = $(window).height();
@@ -70,7 +90,7 @@
 
 
 		$('.indicator').click(function (e) {
-			page_height = $('.active').height() - height; 
+			page_height = $('.active').height() - height;
 			var posY = $(this).position().top;
 			var progress = page_height*posY/scroll_height;
 			$('body').stop().animate({'scrollTop' : progress},700,'easeInOutQuad');
@@ -108,7 +128,7 @@
 		var visible_height;
 
 		$(window).on('scroll', function(e){
-			
+
 			page_height = $('.active').height() - height;
 			scrolltop = $(window).scrollTop();
 			var progress = 100*scrolltop/page_height;
@@ -119,7 +139,7 @@
 
 			if ($('.active').attr('id')=='homesite') {
 				if (count < 4){
-					item = '.anim' + count; 
+					item = '.anim' + count;
 					float_item = $('.active').children().children().filter(item);
 					float_item_offset = float_item.offset().top;
 					visible_height = float_item_offset - height*0.9;
@@ -132,7 +152,7 @@
 
 		});
 
-		
+
 
 		$('.toggle').click(function (e) {
 			$('.toggle').children().toggleClass('clicked');
@@ -141,10 +161,19 @@
 
 			set();
 			$(setOfIndicators + '.indicator').toggleClass('out');
+
+			var vid = document.getElementById("nobody")
+			vid.play();
 		});
 
 
 		$('li a').click(function(){
+			var vid = document.getElementById("wow");
+			$('#wow').slideDown('fast');
+			setTimeout(function(){
+				$('#wow').slideUp('fast');
+			},7000);
+			wow.play();
 			$('.toggle').trigger('click');
 
 			$(setOfIndicators + '.indicator').toggleClass('out');
@@ -209,7 +238,7 @@
 				var item_top = $(this).position().top;
 				var center = item_top - 0.175*height;
 				$('body').stop().animate({'scrollTop' : center},700,'easeInOutQuad');
-				
+
 				$('.full-size').removeClass('full-size');
 				$(this).addClass('full-size');
 			};
@@ -238,7 +267,7 @@
 			        var item_top = $('.full-size').next().position().top;
 					var center = item_top - 0.175*height;
 					$('body').stop().animate({'scrollTop' : center},700,'easeInOutQuad');
-					
+
 					$('.full-size').removeClass('full-size').next().addClass('full-size');
 
 			    }else if(e.originalEvent.wheelDelta > 0) {
@@ -249,22 +278,22 @@
 			        var item_top = $('.full-size').prev().position().top;
 					var center = item_top - 0.175*height;
 					$('body').stop().animate({'scrollTop' : center},700,'easeInOutQuad');
-					
+
 					$('.full-size').removeClass('full-size').prev().addClass('full-size');
 			    }
 			};
-		    
+
 		    return false;
 		});
 	});
-	
-	
+
+
 	var inputFields = $('.form-label').next();
 	inputFields.each(function(){
 		var singleInput = $(this);
-		( singleInput.val() == '' ) ? singleInput.prev('.form-label').removeClass('float') : singleInput.prev('.form-label').addClass('float');	
+		( singleInput.val() == '' ) ? singleInput.prev('.form-label').removeClass('float') : singleInput.prev('.form-label').addClass('float');
 		singleInput.on('change keyup', function(){
-			( singleInput.val() == '' ) ? singleInput.prev('.form-label').removeClass('float') : singleInput.prev('.form-label').addClass('float');	
+			( singleInput.val() == '' ) ? singleInput.prev('.form-label').removeClass('float') : singleInput.prev('.form-label').addClass('float');
 		});
 	});
 
@@ -278,7 +307,7 @@
 		$('.border-height').removeClass('deactive-height');
 		setTimeout(function(newSendTime){
 			if (send && newSendTime == sendTime) {
-				alert('Nothing has been sended you foooool, this message shall not paaaaaaaasssssss!!!!!!!');	
+				alert('Nothing has been sended you foooool, this message shall not paaaaaaaasssssss!!!!!!!');
 			}
 		}.bind(null, sendTime), 1000);
 	});
@@ -291,5 +320,5 @@
 		e.preventDefault;
 		return false;
 	});
-	
+
 })(jQuery);
